@@ -12,11 +12,11 @@ class User < ApplicationRecord
         raise ArgumentError.new("password is a required field")
       end
 
-      user = User.new
-      user[:email] = params[:email]
-      user[:password] = params[:password]
-      user[:full_name] = params[:full_name]
-      user[:age] = params[:age]
+      user 			 = User.new
+      user.email	 = params[:email]
+      user.age 		 = params[:age]
+      user.full_name = params[:full_name]
+      user.password  = params[:password]
       dup = user.duplicate
       if dup.present?
         return dup
