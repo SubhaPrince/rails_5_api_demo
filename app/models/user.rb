@@ -12,9 +12,9 @@ class User < ApplicationRecord
         raise ArgumentError.new("password is a required field")
       end
 
-      user 			 = User.new
-      user.email	 = params[:email]
-      user.age 		 = params[:age]
+      user       = User.new
+      user.email   = params[:email]
+      user.age     = params[:age]
       user.full_name = params[:full_name]
       user.password  = params[:password]
       dup = user.duplicate
@@ -36,7 +36,23 @@ class User < ApplicationRecord
     end
   end
 
+  # check the duplicate user with a valid email
   def duplicate
     return User.where("email = ?", self.email).take
+  end
+
+  # updating token for logout operation
+  def invalidate_token
+    self.update_columns(token: nil)
+  end
+
+  # first checks the email is exist in the data base or not
+  # if the email is valid then check for password 
+  # if both matches the return the user
+  def self.valid_login?(email, password)
+    user = find_by(email: email)
+    if user && user.authenticate(password)
+      user
+    end
   end
 end
