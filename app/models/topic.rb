@@ -1,4 +1,5 @@
 class Topic < ApplicationRecord
+  has_and_belongs_to_many :users
   def self.create(params)
     retry_count = 2
     begin
