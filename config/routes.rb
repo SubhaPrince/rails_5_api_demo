@@ -9,9 +9,13 @@ Rails.application.routes.draw do
       resources :users do
         collection do
           get :topics
-        end 
+        end
       end
-      resources :topics
+      resources :topics do
+        member do
+          get :users
+        end
+      end
     end
   end
 end

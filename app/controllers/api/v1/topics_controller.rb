@@ -16,6 +16,11 @@ class Api::V1::TopicsController < ApplicationController
     end
   end
 
+  def users
+    topic = Topic.find_by_name(params[:id])
+    users = topic.users
+    render json: users
+  end
 
   private
   def topic_params
