@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     scope module: :v1, :format => true, :constraints => { :format => 'json' } do
       post   "/login"       => "sessions#create"
       delete "/logout"      => "sessions#destroy"
+
+      resources :users
     end
   end
 end
