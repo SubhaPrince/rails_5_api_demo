@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+  # to access authenticate_with_http_basic method
+  include ActionController::HttpAuthentication::Token::ControllerMethods
   include ActionController::MimeResponds
   #to varify the authenticate user
   def authenticate_user!
