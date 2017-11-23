@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  include ActionController::MimeResponds
   #to varify the authenticate user
   def authenticate_user!
     authenticate_token || render_unauthorized("Access denied")
@@ -16,7 +17,7 @@ class ApplicationController < ActionController::API
     render json: errors, status: :unauthorized
   end
   private
-  # authenticate_with_http_token takes the token provided in the header of the http request 
+  # authenticate_with_http_token takes the token provided in the header of the http request
   # makes it available in the token block variable
   def authenticate_token
     authenticate_with_http_token do |token, options|
