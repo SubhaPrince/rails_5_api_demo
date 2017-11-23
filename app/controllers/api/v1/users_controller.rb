@@ -12,4 +12,9 @@ class Api::V1::UsersController < ApplicationController
       f.json {render json: {}, status: status}
     end
   end
+
+  def topics
+    topics = current_user.topics
+    render json: topics
+  end
 end
