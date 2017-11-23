@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_secure_token
   has_secure_password # it tell to load bcrypt-ruby
   has_and_belongs_to_many :topics
+  validates :email, :password, presence: true
+  
   def self.create(params)
     retry_count = 2
     begin
@@ -11,7 +13,6 @@ class User < ApplicationRecord
       if params[:password].blank?
         raise ArgumentError.new("password is a required field")
       end
-
       user       = User.new
       user.email   = params[:email]
       user.age     = params[:age]
