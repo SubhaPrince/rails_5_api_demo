@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:create], raise: false
+  before_action :authenticate_user!, only: [:topics], raise: false
+
   def create
     user = User.create(params)
     if user.errors.any?
