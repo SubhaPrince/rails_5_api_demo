@@ -25,40 +25,55 @@ A simple demo project where a The user can login by providing a valid email and 
 
 * API's
 	User signup
+	
 		url: http://localhost:3000/api/login.json
+		
 		Return a message user's created or not
+		
 		PARAMETERS:
+		
 			email: string
+			
 			password: password
+			
 			full_name: string
+			
 			age: integer
 
 	user Login
 		URL: http://localhost:3000/api/login.json
+		
 		Raturns a uniq token
+		
 		PARAMETTERS
+		
 			email: string
+			
 			password: password
+			
 
 	Get a users for a topic
 		URL: http://localhost:3000/api/topics/"#{foot_ball}"/users.json
+		
 		return array of users with following formats
-			{
-		    "data": [
-		        {
-	            "id": "9",
-	            "type": "users",
-	            "attributes": {
-	                "full-name": "subhaisis",
-	                "age": null
-	            }
-		        }
-		    ]
-			}
+			{			
+			    "data": [		    
+				{			
+			    "id": "9",		    
+			    "type": "users",		    
+			    "attributes": {		    
+				"full-name": "subhaisis",			
+				"age": null			
+			    }		    
+		   	}			
+		    ]		    
+		}
+			
 	Get a user's topics
 		URL: http://localhost:3000/api/users/topics/
 		return array of topic with following formats
 		{
+		
 		    "data": [
 		        {
 	            "id": "9",
