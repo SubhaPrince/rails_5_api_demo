@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_secure_token
   has_secure_password # it tell to load bcrypt-ruby
   has_and_belongs_to_many :topics
-  validates :email, :password, presence: true
+  validates :email, presence: true
   
   def self.create(params)
     retry_count = 2
