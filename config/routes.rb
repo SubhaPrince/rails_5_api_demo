@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       delete "/logout"      => "sessions#destroy"
       post "/signup"		=> "users#create"
       resources :users do
-        collection do
+        member do
           get :topics
         end
       end

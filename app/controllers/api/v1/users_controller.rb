@@ -15,7 +15,16 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def topics
-    topics = current_user.topics
-    render json: topics
+    if params[:id].to_i == 0
+      redirect_to :api_login_path if current_user.blank?
+      topics = current_user.topics
+    else
+      user = User.find_by_id(params[:id])
+      topics = user.topics if user.present?
+    end
+    # render json: topics, root: false
+    respond_to do |f|
+      f.json {render json: topics, status: :ok}
+    end
   end
 end
