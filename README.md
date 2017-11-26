@@ -70,7 +70,8 @@ A simple demo project where a The user can login by providing a valid email and 
 		}
 			
 	Get a user's topics
-		URL: http://localhost:3000/api/users/topics/
+		URL: http://localhost:3000/api/users/{id}/topics/
+		# current user topics when id is 0
 		return array of topic with following formats
 		{
 		
